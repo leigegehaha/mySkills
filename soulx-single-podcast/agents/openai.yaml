@@ -1,0 +1,4 @@
+interface:
+  display_name: "SoulX Single Podcast"
+  short_description: "Turn long drafts into polished SoulX podcast audio"
+  default_prompt: "Use $soulx-single-podcast to polish this draft into a spoken single-speaker podcast, add natural pauses and sparse paralinguistic tags, auto-segment long text, and synthesize the final audio."

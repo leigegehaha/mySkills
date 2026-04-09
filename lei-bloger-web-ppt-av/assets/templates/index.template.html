@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{DOCUMENT_TITLE}}</title>
+    <link rel="stylesheet" href="assets/deck.css" />
+  </head>
+  <body data-mode="shell">
+    <canvas class="particle-canvas"></canvas>
+    <div class="noise"></div>
+    <div class="cursor-follower"></div>
+
+    <section class="cover" aria-label="封面">
+      <div class="cover-inner reveal" style="--delay: 0.12s">
+        <h1 class="cover-title">{{COVER_TITLE}}</h1>
+        <button class="start-button" data-start>{{START_LABEL}}</button>
+      </div>
+    </section>
+
+    <section class="shell-stage" aria-label="演示区">
+      <div class="viewport-shell">
+        <div class="shell-shutter" data-shutter></div>
+{{SLIDE_IFRAMES}}
+        <div class="shell-counter" data-counter>01 / {{TOTAL_SLIDES}}</div>
+      </div>
+    </section>
+
+    <script src="assets/deck.js"></script>
+  </body>
+</html>

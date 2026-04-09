@@ -1,0 +1,4 @@
+interface:
+  display_name: "Swiss Style Web PPT AI"
+  short_description: "交互式网页 PPT / 自动视频与字幕导出技能"
+  default_prompt: "Use $swiss-style-web-ppt-ai to create or edit an iframe-based interactive HTML slide deck, or export an existing web PPT into a synchronized video by accepting a narration audio file, inferring slide-switch timing from the deck plus transcript, auto-switching pages, and producing MP4 plus standalone subtitles."

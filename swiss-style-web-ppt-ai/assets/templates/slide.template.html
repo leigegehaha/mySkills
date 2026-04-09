@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{PAGE_NUM}} / {{TOTAL_SLIDES}} - {{PAGE_TITLE}}</title>
+    <link rel="stylesheet" href="../assets/deck.css" />
+    <style>
+      .media-placeholder {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        align-content: space-between;
+        gap: 0.8rem;
+        padding: 1.15rem;
+        background:
+          linear-gradient(135deg, rgba(216, 23, 32, 0.16), transparent 44%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 243, 236, 0.98));
+      }
+
+      .media-placeholder__kicker {
+        width: fit-content;
+        padding: 0.36rem 0.48rem;
+        border: 2px solid rgba(19, 19, 19, 0.7);
+        background: rgba(255, 255, 255, 0.9);
+        color: #d81720;
+        font-family: "Press Start 2P", "IBM Plex Mono", monospace;
+        font-size: clamp(0.48rem, 0.62vw, 0.58rem);
+      }
+
+      .media-placeholder__title {
+        margin: 0;
+        font-size: clamp(1.2rem, 1.7vw, 1.72rem);
+        line-height: 1.06;
+        font-weight: 900;
+        max-width: 12ch;
+      }
+
+      .media-placeholder__copy {
+        margin: 0;
+        max-width: 28ch;
+        font-size: clamp(0.84rem, 0.94vw, 0.94rem);
+        line-height: 1.45;
+        color: rgba(19, 19, 19, 0.72);
+      }
+    </style>
+  </head>
+  <body data-mode="slide">
+    <canvas class="particle-canvas"></canvas>
+    <div class="noise"></div>
+    <div class="cursor-follower"></div>
+
+    <div class="stage-root">
+      <header class="slide-top">
+        <div class="brand-chip">{{BRAND}}</div>
+        <div class="page-chip">{{PAGE_NUM}} / {{TOTAL_SLIDES}}</div>
+      </header>
+
+      <main class="deck hero-grid">
+        <section class="panel panel-strong hero-copy hover-card tilt-card reveal" style="--delay: 0.08s">
+          <div class="copy-stack">
+            <p class="eyebrow">{{EYEBROW}}</p>
+            <h1 class="slide-title slide-title--compact">{{SLIDE_TITLE}}</h1>
+            <p class="lead">{{LEAD}}</p>
+          </div>
+
+          <div class="list-stack">
+            <ul class="bullet-list">
+              <li class="bullet-item"><span class="dot"></span><span>{{BULLET_1}}</span></li>
+              <li class="bullet-item"><span class="dot"></span><span>{{BULLET_2}}</span></li>
+              <li class="bullet-item"><span class="dot"></span><span>{{BULLET_3}}</span></li>
+            </ul>
+
+            <div class="chip-row">
+              <span class="text-chip">{{CHIP_1}}</span>
+              <span class="text-chip">{{CHIP_2}}</span>
+              <span class="text-chip">{{CHIP_3}}</span>
+            </div>
+
+            <div class="quote-box">
+              <p class="quote-text">{{QUOTE}}</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel hover-card reveal" style="--delay: 0.18s">
+          <div class="content-stack">
+            <div class="stamp">{{STAMP}}</div>
+            <h2 class="panel-title">{{PANEL_TITLE}}</h2>
+            <p class="card-copy">{{SIDE_COPY}}</p>
+
+            <div class="metric-strip">
+              <div class="metric-box">
+                <div class="metric-value">{{METRIC_1_VALUE}}</div>
+                <div class="metric-label">{{METRIC_1_LABEL}}</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">{{METRIC_2_VALUE}}</div>
+                <div class="metric-label">{{METRIC_2_LABEL}}</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">{{METRIC_3_VALUE}}</div>
+                <div class="metric-label">{{METRIC_3_LABEL}}</div>
+              </div>
+            </div>
+
+            <div class="media-stack">
+              <figure class="media-frame compact tilt-card hover-card">
+                <div class="media-placeholder">
+                  <span class="media-placeholder__kicker">内容配图位</span>
+                  <p class="media-placeholder__title">{{PLACEHOLDER_TITLE}}</p>
+                  <p class="media-placeholder__copy">{{PLACEHOLDER_COPY}}</p>
+                </div>
+                <div class="image-tint"></div>
+                <div class="scan"></div>
+              </figure>
+
+              <div class="media-caption">
+                <span class="media-tag">{{MEDIA_TAG}}</span>
+                <span class="media-note">{{MEDIA_NOTE}}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../assets/deck.js"></script>
+  </body>
+</html>

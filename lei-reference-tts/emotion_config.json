@@ -1,0 +1,27 @@
+{
+  "default_profile": "lively_excited",
+  "profiles": {
+    "neutral": {
+      "emotion_mode": "reference",
+      "emo_alpha": 1.0
+    },
+    "lively_excited": {
+      "emotion_mode": "vector",
+      "emo_alpha": 0.95,
+      "emo_vector": [0.72, 0.0, 0.0, 0.0, 0.0, 0.0, 0.36, 0.08],
+      "use_random": false
+    },
+    "lively_excited_text": {
+      "emotion_mode": "text",
+      "emo_alpha": 0.9,
+      "emo_text": "语气活泼、兴奋、上扬，像在热情分享一个很有意思的新发现，节奏稍快，带一点惊喜感。",
+      "use_random": false
+    },
+    "custom": {
+      "emotion_mode": "vector",
+      "emo_alpha": 0.9,
+      "emo_vector": [0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.1],
+      "use_random": false
+    }
+  }
+}

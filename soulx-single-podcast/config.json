@@ -1,0 +1,48 @@
+{
+  "soulx_repo_path": "/Users/zhangleiandhim/Documents/lmd_data_root/apps/soulx-podcast",
+  "python_bin": "/Users/zhangleiandhim/Documents/lmd_data_root/apps/soulx-podcast/venv/bin/python",
+  "model_path": "/Users/zhangleiandhim/Documents/lmd_data_root/apps/soulx-podcast/pretrained_models/SoulX-Podcast-1.7B",
+  "output_dir": "./outputs/soulx-podcast",
+  "default_language": "zh",
+  "default_oralization_degree": 0.7,
+  "default_speed_rate": 1.1,
+  "default_reference_id": "zhanglei-xunfei",
+  "default_silence_ms": 220,
+  "max_chars_per_chunk": {
+    "zh": 420,
+    "en": 650
+  },
+  "reference_profiles": [
+    {
+      "id": "zhanglei-xunfei",
+      "label": "Zhang Lei Xunfei",
+      "audio_path": "./assets/zhanglei-xunfei.wav",
+      "prompt_text": "你们大家好，我是张蕾。希望大家能够订阅我的频道，能够在我的频道里面去学习相关的一些具身智能，和一些关于人工智能的前沿知识。感谢大家。",
+      "languages": [
+        "zh",
+        "en"
+      ],
+      "default": true
+    },
+    {
+      "id": "female-mandarin",
+      "label": "Female Mandarin Demo",
+      "audio_path": "./assets/female-mandarin.wav",
+      "prompt_text": "喜欢攀岩、徒步、滑雪的语言爱好者，以及过两天要带着全部家当去景德镇做陶瓷的白日梦想家。",
+      "languages": [
+        "zh",
+        "en"
+      ]
+    },
+    {
+      "id": "male-mandarin",
+      "label": "Male Mandarin Demo",
+      "audio_path": "./assets/male-mandarin.wav",
+      "prompt_text": "呃，还有一个就是要跟大家纠正一点，就是我们在看电影的时候，尤其是游戏玩家，看电影的时候，在看到那个到西北那边的这个陕北民谣，嗯，这个可能在想，哎，是不是他是受到了黑神话的启发？",
+      "languages": [
+        "zh",
+        "en"
+      ]
+    }
+  ]
+}

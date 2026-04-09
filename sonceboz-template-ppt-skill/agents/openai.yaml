@@ -1,0 +1,5 @@
+version: 1
+interface:
+  display_name: Sonceboz Template PPT
+  short_description: Build English client-facing PPTs from the bundled Sonceboz template.
+  default_prompt: Generate a professional English PowerPoint from my text, document, or webpage using the bundled Sonceboz template. Extract useful images and data, polish the wording, and choose an appropriate layout for a test report, market research, or meeting summary.

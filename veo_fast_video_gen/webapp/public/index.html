@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veo Fast Video Tester</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Veo Fast Lab</p>
+          <h1>Veo 文生视频 / 图生视频 测试台</h1>
+          <p class="lede">专门为 `veo_3_1-fast-4K` 做的本地测试网页。提交、观察、回看、删除，都在同一面流式历史墙上完成。</p>
+        </div>
+        <div class="hero-stat">
+          <span>实时</span>
+          <strong id="jobCount">0</strong>
+          <small>历史任务</small>
+        </div>
+      </section>
+
+      <section class="panel composer">
+        <div class="mode-switch">
+          <button class="mode-chip active" data-mode="text">文生视频</button>
+          <button class="mode-chip" data-mode="image">图生视频</button>
+        </div>
+
+        <form id="generateForm" class="form-grid">
+          <label class="field field-wide">
+            <span>提示词</span>
+            <textarea id="prompt" rows="5" placeholder="描述场景、动作、镜头感……" required></textarea>
+          </label>
+
+          <label class="field image-only hidden">
+            <span>选择本地图片</span>
+            <input id="imageFile" type="file" accept="image/png,image/jpeg,image/jpg,image/webp,image/gif" />
+          </label>
+
+          <label class="field image-only hidden">
+            <span>或填写远程图片 URL</span>
+            <input id="imagePath" type="text" placeholder="https://example.com/test.png" />
+          </label>
+
+          <label class="field">
+            <span>比例</span>
+            <select id="aspectRatio">
+              <option>16:9</option>
+              <option>9:16</option>
+              <option>1:1</option>
+              <option>4:3</option>
+              <option>3:4</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>时长</span>
+            <select id="seconds">
+              <option value="5">5 秒</option>
+              <option value="6">6 秒</option>
+              <option value="8">8 秒</option>
+              <option value="10">10 秒</option>
+            </select>
+          </label>
+
+          <div class="actions">
+            <button id="submitButton" type="submit">开始生成</button>
+            <p id="statusText">等待提交</p>
+          </div>
+        </form>
+      </section>
+
+      <section class="history-head">
+        <div>
+          <p class="eyebrow">History Stream</p>
+          <h2>生成历史</h2>
+          <p class="history-summary">累计生成耗时：<strong id="totalGenerationTime">0 秒</strong></p>
+        </div>
+        <button id="refreshButton" class="ghost">刷新</button>
+      </section>
+
+      <section id="historyGrid" class="history-grid"></section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+  </html>

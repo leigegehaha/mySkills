@@ -1,0 +1,8 @@
+version: 1
+interface:
+  display_name: "Lei Blogger Web PPT AV"
+  short_description: "文案一键生成 Lei 口播 + 网页 PPT + 同步讲解视频"
+  default_prompt: "Use $lei-bloger-web-ppt-av to turn my text or file into a polished Lei blogger narration, an iframe-based web PPT, and a synchronized PPT playback video whose slide switches follow the narration timing."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.pyc
+.env
+*/.env
+
+# Generated media and local outputs
+output/
+outputs/
+uploads/
+*-task-id.txt
+
+# Local skill manager state
+skills/.skills_store_lock.json

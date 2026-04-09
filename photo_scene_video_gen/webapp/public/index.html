@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Scene Video Tester</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Photo Scene Video Lab</p>
+          <h1>上传一张人像，自动先出图，再生成视频</h1>
+          <p class="lede">输入参考照片、场景描述和台词，网页会自动生成关键帧与最终视频。支持自拍视频、后置固定机位、后置手持和电影感镜头。</p>
+        </div>
+        <div class="hero-stat">
+          <span>实时</span>
+          <strong id="jobCount">0</strong>
+          <small>历史任务</small>
+        </div>
+      </section>
+
+      <section class="panel composer">
+        <form id="generateForm" class="form-grid">
+          <label class="field field-wide">
+            <span>场景描述</span>
+            <textarea id="scene" rows="5" placeholder="例如：在美发店，穿红色裙子，拿着手机对镜头比 yeah，轻松自然地说生日祝福……" required></textarea>
+          </label>
+
+          <label class="field field-wide">
+            <span>台词</span>
+            <textarea id="dialogue" rows="3" placeholder="例如：老公，今天你生日，我做个头发，美美的去见你的朋友，爱你，么么哒"></textarea>
+          </label>
+
+          <label class="field">
+            <span>本地参考照片</span>
+            <input id="imageFile" type="file" accept="image/png,image/jpeg,image/jpg,image/webp,image/gif" />
+          </label>
+
+          <label class="field">
+            <span>或本地图片路径</span>
+            <input id="imagePath" type="text" placeholder="/Users/.../face.png" />
+          </label>
+
+          <label class="field">
+            <span>镜头风格</span>
+            <select id="shotStyle">
+              <option value="selfie">iPhone 自拍</option>
+              <option value="rear-fixed">后置固定机位</option>
+              <option value="rear-handheld">后置手持机位</option>
+              <option value="cinematic">电影感镜头</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>比例</span>
+            <select id="aspectRatio">
+              <option selected>9:16</option>
+              <option>16:9</option>
+              <option>3:2</option>
+              <option>1:1</option>
+              <option>4:3</option>
+              <option>3:4</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>清晰度</span>
+            <select id="size">
+              <option selected>720P</option>
+              <option>1080P</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>时长</span>
+            <select id="duration">
+              <option value="6" selected>6 秒</option>
+              <option value="10">10 秒</option>
+              <option value="15">15 秒</option>
+            </select>
+          </label>
+
+          <div class="actions">
+            <button id="submitButton" type="submit">开始生成</button>
+            <p id="statusText">等待提交</p>
+          </div>
+        </form>
+      </section>
+
+      <section class="history-head">
+        <div>
+          <p class="eyebrow">History Stream</p>
+          <h2>生成历史</h2>
+          <p class="history-summary">累计耗时：<strong id="totalGenerationTime">0 秒</strong></p>
+        </div>
+        <button id="refreshButton" class="ghost">刷新</button>
+      </section>
+
+      <section id="historyGrid" class="history-grid"></section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+  </html>

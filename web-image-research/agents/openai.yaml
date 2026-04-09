@@ -1,0 +1,5 @@
+version: 1
+interface:
+  display_name: Web Image Research
+  short_description: Search real web images and fall back to Gemini realistic images.
+  default_prompt: Find suitable real images for my presentation topic from public web sources, score and download them, and only if needed generate concise realistic Gemini fallback images.

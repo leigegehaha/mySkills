@@ -1,0 +1,13 @@
+Purpose: test-report
+Title: O6 Dexterous Hand Validation Report
+
+This document should become a concise English customer-facing test report.
+Please preserve measurable claims, polish the language, and reserve placeholders for any missing video or thermal images.
+
+Key source facts:
+- 6 active DOF, 5 passive DOF
+- Weight 370 g
+- Communication CAN / RS485
+- Max grasp force measured 67.8 N after offset correction
+- Index finger speed 81.8 deg/s
+- Temperature rise after 24 h endurance: 3.4 C

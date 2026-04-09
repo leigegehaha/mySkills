@@ -1,0 +1,8 @@
+{
+  "gemini": {
+    "api_base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "model": "gemini-2.0-flash-exp-image-generation",
+    "api_key_env": "GEMINI_API_KEY",
+    "default_style_suffix": "clean realistic style, minimal composition, professional product or industrial photography, natural lighting, non-illustrative, not cartoon, suitable for a client presentation"
+  }
+}

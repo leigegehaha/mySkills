@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swiss Style Web PPT Editor</title>
+    <link rel="stylesheet" href="./app.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <p class="eyebrow">Swiss Style Deck Studio</p>
+          <h1 class="app-title">网页 PPT 可视化编辑器</h1>
+          <p class="app-copy">像改 PPT 一样改这套 HTML deck：文字、位置、图片、音效都能直接调整。</p>
+        </div>
+
+        <div class="topbar-controls">
+          <label class="field compact">
+            <span>选择 Deck</span>
+            <select id="deckSelect"></select>
+          </label>
+          <button id="undoBtn" class="ghost-button">撤销</button>
+          <button id="redoBtn" class="ghost-button">重做</button>
+          <button id="openPlayerBtn" class="ghost-button">打开播放器</button>
+          <button id="reloadBtn" class="ghost-button">重新加载</button>
+          <button id="saveBtn" class="primary-button">保存当前页</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="sidebar panel">
+          <div class="section-head">
+            <div>
+              <p class="section-label">Deck Items</p>
+              <h2 class="section-title">页面导航</h2>
+            </div>
+            <div class="status-chip" id="deckStatus">就绪</div>
+          </div>
+
+          <div class="tool-cluster">
+            <button id="newPageBtn" class="ghost-button">新建页</button>
+            <button id="duplicatePageBtn" class="ghost-button">复制页</button>
+            <button id="deletePageBtn" class="ghost-button danger">删页</button>
+          </div>
+
+          <div class="tool-cluster">
+            <button id="addTextBtn" class="ghost-button">新增文本块</button>
+            <button id="addImageBtn" class="ghost-button">新增图片</button>
+            <button id="deleteBtn" class="ghost-button danger">删除选中</button>
+          </div>
+
+          <div id="slideList" class="slide-list"></div>
+          <p class="sidebar-hint">支持 Shift 多选，拖拽时显示对齐线并自动吸附；单个文本和图片可在画布里直接缩放。</p>
+        </aside>
+
+        <section class="canvas-area panel">
+          <div class="canvas-head">
+            <div>
+              <p class="section-label">Live Canvas</p>
+              <h2 class="section-title">实时预览</h2>
+            </div>
+            <div class="file-chip" id="currentFileLabel">尚未选择页面</div>
+          </div>
+
+          <div class="canvas-shell">
+            <div class="viewport-shell" id="viewportShell">
+              <iframe id="previewFrame" title="PPT 页面编辑预览"></iframe>
+              <div id="canvasOverlay" class="canvas-overlay">
+                <div id="guideLayer" class="guide-layer"></div>
+                <div id="selectionOutlines" class="selection-outlines"></div>
+                <div id="selectionBox" class="selection-box hidden">
+                  <div class="selection-tag" id="selectionTag">未选中</div>
+                  <button class="handle resize-handle handle-nw" type="button" data-resize="nw" aria-label="Resize north west"></button>
+                  <button class="handle resize-handle handle-ne" type="button" data-resize="ne" aria-label="Resize north east"></button>
+                  <button class="handle resize-handle handle-sw" type="button" data-resize="sw" aria-label="Resize south west"></button>
+                  <button class="handle resize-handle handle-se" type="button" data-resize="se" aria-label="Resize south east"></button>
+                </div>
+                <div id="interactionShield" class="interaction-shield hidden"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="inspector panel">
+          <div class="section-head">
+            <div>
+              <p class="section-label">Inspector</p>
+              <h2 class="section-title">属性面板</h2>
+            </div>
+            <div class="status-chip muted" id="selectionTypeLabel">未选中</div>
+          </div>
+
+          <section class="control-group">
+            <h3 class="control-title">当前对象</h3>
+            <div class="inspector-meta">
+              <div><span class="meta-label">标签</span><span id="metaTag">—</span></div>
+              <div><span class="meta-label">类名</span><span id="metaClass">—</span></div>
+            </div>
+          </section>
+
+          <section class="control-group">
+            <h3 class="control-title">位置与尺寸</h3>
+            <div class="grid-two">
+              <label class="field">
+                <span>X 偏移</span>
+                <input id="offsetXInput" type="number" value="0" />
+              </label>
+              <label class="field">
+                <span>Y 偏移</span>
+                <input id="offsetYInput" type="number" value="0" />
+              </label>
+              <label class="field">
+                <span>宽度(px)</span>
+                <input id="widthInput" type="number" placeholder="自动" />
+              </label>
+              <label class="field">
+                <span>高度(px)</span>
+                <input id="heightInput" type="number" placeholder="自动" />
+              </label>
+            </div>
+          </section>
+
+          <section class="control-group" id="textControls">
+            <h3 class="control-title">文字编辑</h3>
+            <label class="field">
+              <span>内容</span>
+              <textarea id="textContentInput" rows="5"></textarea>
+            </label>
+            <div class="grid-two">
+              <label class="field">
+                <span>字号(px)</span>
+                <input id="fontSizeInput" type="number" />
+              </label>
+              <label class="field">
+                <span>字重</span>
+                <select id="fontWeightInput">
+                  <option value="">保持默认</option>
+                  <option value="400">400</option>
+                  <option value="500">500</option>
+                  <option value="700">700</option>
+                  <option value="800">800</option>
+                  <option value="900">900</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>颜色</span>
+                <input id="colorInput" type="color" value="#131313" />
+              </label>
+              <label class="field">
+                <span>对齐</span>
+                <select id="textAlignInput">
+                  <option value="">默认</option>
+                  <option value="left">左对齐</option>
+                  <option value="center">居中</option>
+                  <option value="right">右对齐</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>行高</span>
+                <input id="lineHeightInput" type="number" min="0.8" max="2.4" step="0.05" />
+              </label>
+              <label class="field">
+                <span>字距(em)</span>
+                <input id="letterSpacingInput" type="number" min="-0.2" max="0.5" step="0.01" />
+              </label>
+            </div>
+          </section>
+
+          <section class="control-group" id="imageControls">
+            <h3 class="control-title">图片编辑</h3>
+            <label class="field">
+              <span>图片路径</span>
+              <input id="imageSrcInput" type="text" />
+            </label>
+            <label class="field">
+              <span>替代文本</span>
+              <input id="imageAltInput" type="text" />
+            </label>
+            <div class="grid-two">
+              <label class="field">
+                <span>填充模式</span>
+                <select id="imageFitInput">
+                  <option value="">默认</option>
+                  <option value="cover">cover</option>
+                  <option value="contain">contain</option>
+                  <option value="fill">fill</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>图像透明度</span>
+                <input id="imageOpacityInput" type="number" min="0.1" max="1" step="0.05" />
+              </label>
+            </div>
+            <div class="tool-cluster compact">
+              <button id="replaceImageBtn" class="ghost-button">替换图片</button>
+              <button id="saveSoundBtn" class="ghost-button">保存音效配置</button>
+            </div>
+          </section>
+
+          <section class="control-group">
+            <h3 class="control-title">翻页音效</h3>
+            <div class="grid-two">
+              <label class="field">
+                <span>预设</span>
+                <select id="soundPresetInput">
+                  <option value="classic">Classic</option>
+                  <option value="brush">Brush</option>
+                  <option value="cyber-brush">Cyber Brush</option>
+                  <option value="sharp-scan">Sharp Scan</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>强度</span>
+                <input id="soundIntensityInput" type="range" min="0.35" max="2" step="0.01" />
+              </label>
+              <label class="field">
+                <span>明亮度</span>
+                <input id="soundBrightnessInput" type="range" min="0.35" max="2" step="0.01" />
+              </label>
+              <label class="field">
+                <span>尾音</span>
+                <input id="soundTailInput" type="range" min="0.35" max="2" step="0.01" />
+              </label>
+              <label class="field">
+                <span>赛博感</span>
+                <input id="soundChirpInput" type="range" min="0" max="2.5" step="0.01" />
+              </label>
+              <label class="field">
+                <span>左右扫动</span>
+                <input id="soundStereoInput" type="range" min="0" max="2" step="0.01" />
+              </label>
+            </div>
+            <div class="tool-cluster compact">
+              <button id="previewPrevSoundBtn" class="ghost-button">试听上一页</button>
+              <button id="previewNextSoundBtn" class="ghost-button">试听下一页</button>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <input id="imagePicker" type="file" accept="image/*" hidden />
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "api_base_url": "https://api.vectorengine.ai",
+  "api_key": "your-api-key-here",
+  "api_key_env": "GROK_IMAGE_API_KEY",
+  "model": "grok-4.2-image",
+  "api_format": "images",
+  "resolution": "2K",
+  "output_dir": "/Users/zhangleiandhim/Documents/Image_output",
+  "_comments": {
+    "api_base_url": "API 基础地址，当前使用 VectorEngine 图片生成端点",
+    "api_key_env": "API Key 的环境变量名；如未设置则回退到 config 中的 api_key",
+    "model": "图片模型名称，当前为 grok-4.2-image",
+    "api_format": "请求格式，当前副本使用 images 端点",
+    "resolution": "图片清晰度：2K 或 4K",
+    "output_dir": "图片输出目录"
+  }
+}

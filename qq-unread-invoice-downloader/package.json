@@ -1,0 +1,12 @@
+{
+  "name": "qq-unread-invoice-downloader",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "imap": "^0.8.19",
+    "mailparser": "^3.7.5",
+    "pdf-parse": "^1.1.1"
+  }
+}
