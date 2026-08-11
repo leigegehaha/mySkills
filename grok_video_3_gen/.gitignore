@@ -1,0 +1,17 @@
+# Binaries
+*.mp4
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.pyc
+.DS_Store
+
+# Output & uploads
+scripts/output/*
+webapp/data/uploads/*
+!scripts/output/.gitkeep
+
+# Real env (use .env.example as template)
+# .env is included with sanitized keys for reference
